@@ -28,21 +28,23 @@ public class RegistrationWithPageObjectsTests extends com.krysov.tests.TestBase 
         String City = "Delhi";
 
         step("Open registrations form", () -> {
-            registrationPage.openPage();});
+            registrationPage.openPage();
+        });
         step("Fill form", () -> {
-        registrationPage.setFirstName(userName)
-                .setLastName(lastName)
-                .setEmail(Email)
-                .setGender(gender)
-                .setPhone(Mobile)
-                .setBirthDate(dayBirth, monthBirth, yearBirth)
-                .setSubjects(Subjects)
-                .setHobbies(Hobbies)
-                .setPicture(Picture)
-                .setAddress(CurrentAddress)
-                .setState(State)
-                .setCity(City)
-                .submit();});
+            registrationPage.setFirstName(userName)
+                    .setLastName(lastName)
+                    .setEmail(Email)
+                    .setGender(gender)
+                    .setPhone(Mobile)
+                    .setBirthDate(dayBirth, monthBirth, yearBirth)
+                    .setSubjects(Subjects)
+                    .setHobbies(Hobbies)
+                    .setPicture(Picture)
+                    .setAddress(CurrentAddress)
+                    .setState(State)
+                    .setCity(City)
+                    .submit();
+        });
         step("Check form results", () -> {
             registrationPage.verifyResultsModalAppears()
                     .verifyResult("Student Name", userName + " " + lastName)
