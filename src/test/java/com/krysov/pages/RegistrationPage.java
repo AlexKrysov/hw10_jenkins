@@ -28,6 +28,7 @@ public class RegistrationPage {
         return this;
     }
 
+    @Step("Заполнить поле FirstName")
     public RegistrationPage setFirstName(String value) {
         firstNameInput.setValue(value);
 
