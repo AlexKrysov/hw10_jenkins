@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
+import static io.qameta.allure.Allure.step;
 
 public class RegistrationWithPageObjectsTests extends com.krysov.tests.TestBase {
 
@@ -24,8 +25,10 @@ public class RegistrationWithPageObjectsTests extends com.krysov.tests.TestBase 
         String State = "NCR";
         String City = "Delhi";
 
-        registrationPage.openPage()
-                .setFirstName(userName)
+        step("Open registrations form", () -> {
+            registrationPage.openPage();});
+        step("Fill form", () -> {
+        registrationPage.setFirstName(userName)
                 .setLastName(lastName)
                 .setEmail(Email)
                 .setGender(gender)
@@ -37,14 +40,16 @@ public class RegistrationWithPageObjectsTests extends com.krysov.tests.TestBase 
                 .setAddress(CurrentAddress)
                 .setState(State)
                 .setCity(City)
-                .submit()
-                .verifyResultsModalAppears()
-                .verifyResult("Student Name", userName + " " + lastName)
-                .verifyResult("Student Email", Email)
-                .verifyResult("Gender", gender)
-                .verifyResult("Mobile", Mobile)
-                .verifyResult("Date of Birth", dayBirth+" "+ monthBirth+","+yearBirth)
-                .verifyResult("State and City", State+ " "+City)
-                .verifyResult("Subjects", Subjects);
+                .submit();});
+        step("Check form results", () -> {
+            registrationPage.verifyResultsModalAppears()
+                    .verifyResult("Student Name", userName + " " + lastName)
+                    .verifyResult("Student Email", Email)
+                    .verifyResult("Gender", gender)
+                    .verifyResult("Mobile", Mobile)
+                    .verifyResult("Date of Birth", dayBirth + " " + monthBirth + "," + yearBirth)
+                    .verifyResult("State and City", State + " " + City)
+                    .verifyResult("Subjects", Subjects);
+        });
     }
 }

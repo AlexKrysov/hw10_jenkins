@@ -18,7 +18,6 @@ public class RegistrationPage {
             lastNameInput = $("#lastName"),
             dateOfBirthInput = $("#dateOfBirthInput");
 
-    @Step("открыть страницу")
     public RegistrationPage openPage() {
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text(TITLE_TEXT));
@@ -28,7 +27,6 @@ public class RegistrationPage {
         return this;
     }
 
-    @Step("Заполнить поле FirstName")
     public RegistrationPage setFirstName(String value) {
         firstNameInput.setValue(value);
 
@@ -120,13 +118,5 @@ public class RegistrationPage {
 
         return this;
     }
-    /*
-    *** SELENIUM
-    @FindBy(how = How.XPATH, xpath = ".//*[@class='submit']")
-    public Button logoutBtn;
-    *** SELENIDE
-    public SelenideElement logoutBtn = $x(".//*[@class='submit]");
-    public SelenideElement logoutBtn = $(".submit");
-     */
 
 }
